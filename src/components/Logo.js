@@ -1,10 +1,9 @@
-import logo from "../imgs/logo";
+import logo from "../imgs/FreeksTrans.png";
 
 const Logo = () => {
   return (
     <div className="Logo flex-center">
-      <img src={logo} alt="Logo" style={{ width: "50px" }}></img>
-      <h2>Task Manager</h2>
+      <img src={logo} alt="Logo" style={{ width: "100px" }}></img>
     </div>
   );
 };
