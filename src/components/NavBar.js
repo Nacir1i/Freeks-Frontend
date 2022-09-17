@@ -16,8 +16,8 @@ const links = [
   },
 ];
 
-const linksComponents = links.map((link, index) => (
-  <li key={index}>
+const linksComponents = links.map((link, i) => (
+  <li key={i}>
     <Link to={`/${link.path}`}>{link.text}</Link>
   </li>
 ));
