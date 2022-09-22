@@ -14,6 +14,14 @@ const links = [
     text: "Event",
     path: "events",
   },
+  {
+    text: "Login",
+    path: "user/login",
+  },
+  {
+    text: "Signup",
+    path: "user/signup",
+  },
 ];
 
 const linksComponents = links.map((link, i) => (
@@ -22,15 +30,13 @@ const linksComponents = links.map((link, i) => (
   </li>
 ));
 
-const Navbar = () => {
+const GuestNavBar = () => {
   return (
-    <div className="wrapper">
-      <div id="nav-area">
-        <Logo />
-        <ul>{linksComponents}</ul>
-      </div>
+    <div id="nav-area" className="positionFixed">
+      <Logo />
+      <ul>{linksComponents}</ul>
     </div>
   );
 };
 
-export default Navbar;
+export default GuestNavBar;
