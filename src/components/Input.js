@@ -1,8 +1,8 @@
-const Input = ({ type, title, required, onChange }) => {
+const Input = ({ type, name, title, required, register }) => {
   return (
     <div className="flex-center inputContainer">
       <label>{title}</label>
-      <input type={type} required={required} onChange={onChange} />
+      <input {...register(name)} type={type} name={name} required={required} />
     </div>
   );
 };

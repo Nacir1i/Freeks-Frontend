@@ -26,24 +26,9 @@ const deleteCookie = () => {
 };
 
 const App = () => {
-  let [user, setUser] = useState(() => null);
-  let [username, setUsername] = useState(() => null);
-  let [email, setEmail] = useState(() => null);
-  let [password, setPassowrd] = useState(() => null);
+  let [user, setUser] = useState(null);
 
-  const handlUser = (userData) =>
-    setUser(() => {
-      user = userData;
-    });
-  const handlUsername = (event) => {
-    setUsername(() => event.target.value);
-  };
-  const handlEmail = (event) => {
-    setEmail(() => event.target.value);
-  };
-  const handlPassword = (event) => {
-    setPassowrd(() => event.target.value);
-  };
+  const handlUser = (userData) => setUser(userData);
 
   const login = (user, authToken) => {
     handlUser(user);
@@ -56,18 +41,7 @@ const App = () => {
   };
   return (
     <>
-      <UserContext.Provider
-        value={{
-          logout,
-          login,
-          handlUsername,
-          username,
-          handlEmail,
-          email,
-          handlPassword,
-          password,
-        }}
-      >
+      <UserContext.Provider value={{ logout, login }}>
         {user ? <UserNavBar /> : <GuestNavBar />}
         <div className="bodyContainer flex-center">
           <Routes>
