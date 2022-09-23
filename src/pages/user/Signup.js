@@ -39,14 +39,14 @@ const Signup = () => {
     createUser(data);
   };
   return (
-    <div className="flex-center container">
+    <div className="flex-center containerSignup">
       <div className="flex-center signContainer">
         <div className="flex-center title">
           <h1>Welcome to Freeks :</h1>
         </div>
         <form className="flex-center" onSubmit={handleSubmit(onSubmit)}>
           {error ? (
-            <div className="flex-center ativeError">
+            <div className="flex-center activeError">
               <p>{error}</p>{" "}
             </div>
           ) : (

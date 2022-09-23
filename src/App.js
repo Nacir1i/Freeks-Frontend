@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { axiosAPI } from "./api/axios";
 import UserNavBar from "./components/UserNavBar";
@@ -13,12 +13,6 @@ import Shop from "./pages/Shop";
 
 export const UserContext = React.createContext();
 
-const setCookie = (token) => {
-  if (!token) return;
-  document.cookie = `authToken=${token}; max-age=86400`;
-  console.log("cookie created");
-};
-
 const deleteCookie = () => {
   const authToken = document.cookie["authToken"];
   if (!authToken) return;
@@ -26,9 +20,17 @@ const deleteCookie = () => {
   console.log("cookie deleted");
 };
 
+const setCookie = (token) => {
+  deleteCookie();
+  if (!token) return;
+  document.cookie = `authToken=${token}; max-age=259200`;
+  console.log("cookie created");
+};
+
 const App = () => {
   let [user, setUser] = useState(null);
   const handlUser = (userData) => setUser(userData);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -45,6 +47,14 @@ const App = () => {
     };
     fetchUser();
   }, []);
+
+  useEffect(() => {
+    const handlNavigate = () => {
+      navigate("/");
+    };
+
+    handlNavigate();
+  }, [user]);
 
   const login = (user, authToken) => {
     handlUser(user);
