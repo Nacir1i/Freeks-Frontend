@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { axiosAPI } from "./api/axios";
 import UserNavBar from "./components/UserNavBar";
 import GuestNavBar from "./components/GuestNavBar";
 import Event from "./pages/event/Event";
@@ -27,8 +28,23 @@ const deleteCookie = () => {
 
 const App = () => {
   let [user, setUser] = useState(null);
-
   const handlUser = (userData) => setUser(userData);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axiosAPI({
+          method: "get",
+          url: "user/verifyToken",
+        });
+        const user = response.data;
+        handlUser(user);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchUser();
+  }, []);
 
   const login = (user, authToken) => {
     handlUser(user);
@@ -41,7 +57,7 @@ const App = () => {
   };
   return (
     <>
-      <UserContext.Provider value={{ logout, login }}>
+      <UserContext.Provider value={{ logout, login, user }}>
         {user ? <UserNavBar /> : <GuestNavBar />}
         <div className="bodyContainer flex-center">
           <Routes>
