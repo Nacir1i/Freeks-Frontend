@@ -7,7 +7,6 @@ import Event from "./pages/event/Event";
 import Home from "./pages/Home";
 import Login from "./pages/user/Login";
 import Signup from "./pages/user/Signup";
-import Profile from "./pages/user/Profile";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
 
@@ -33,6 +32,10 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const cookie = document.cookie;
+    if (!cookie) {
+      return;
+    }
     const fetchUser = async () => {
       try {
         const response = await axiosAPI({
@@ -76,7 +79,6 @@ const App = () => {
             <Route path="/user">
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
-              <Route path="profile" element={<Profile />} />
             </Route>
             <Route path="/about" element={<About />} />
             <Route path="/shop" element={<Shop />} />

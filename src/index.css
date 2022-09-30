@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Utils:  */
-.flex-center {
+/* .flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,6 +21,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  color: white;
 }
 
 #root {
@@ -187,4 +192,5 @@ body {
   height: 40px;
   margin-top: 10px;
   cursor: pointer;
-}
+} */
+/* ----------------------------- */
