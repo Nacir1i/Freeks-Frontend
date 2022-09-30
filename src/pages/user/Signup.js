@@ -76,12 +76,7 @@ const Signup = () => {
             />
           </div>
           <div className="flex-center buttonDiv">
-            <Button
-              text="Create and account"
-              type="submit"
-              color="black"
-              backgroundColor="white"
-            />
+            <Button text="Create and account" type="submit" color="black" />
             <p>
               Or <Link to="/user/login">LOGIN</Link> if you have an account
             </p>
