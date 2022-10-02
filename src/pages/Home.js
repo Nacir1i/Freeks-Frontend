@@ -1,8 +1,12 @@
+import AboutSection from "../components/About";
+import HomeSection from "../components/Home";
+
 const Home = () => {
   return (
-    <div className="homeContainer">
-      <div id="header"></div>
-    </div>
+    <>
+      <HomeSection />
+      <AboutSection />
+    </>
   );
 };
 

@@ -2,6 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    extend: {
+      backgroundImage: {
+        deskTop: "url('../imgs/banner2.jpg')",
+      },
+      colors: {
+        bag: "#35013f",
+      },
+    },
     screens: {
       sm: "640px",
 

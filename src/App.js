@@ -72,7 +72,7 @@ const App = () => {
     <>
       <UserContext.Provider value={{ logout, login, user }}>
         {user ? <UserNavBar /> : <GuestNavBar />}
-        <div className="bodyContainer flex-center">
+        <div className="h-screen w-sreen text-white">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/events" element={<Event />} />

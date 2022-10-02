@@ -39,26 +39,26 @@ const GuestNavBar = () => {
         className="group text-white transition duration-500"
       >
         {link.text}
-        <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
+        <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
       </Link>
     </li>
   ));
   const hiddenNav = links.map((link, i) => (
-    <li key={i} className="w-full py-4 text-center border-b-2 border-zinc-200">
+    <li key={i} className="w-full py-4 text-center">
       <Link
         to={`/${link.path}`}
         className="group text-white transition duration-500"
       >
         {link.text}
-        <span class="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
+        <span className="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
       </Link>
     </li>
   ));
   return (
-    <div className="fixed w-screen md:h-24 h-[70px] bg-stone-900 text-white">
+    <div className="fixed z-50 w-screen md:h-24 h-[70px] bg-stone-900 text-white">
       <div className="w-full h-full flex items-center justify-between ">
         <Logo />
-        <ul className="hidden md:flex items-center justify-between w-96 mr-5 text-lg">
+        <ul className="hidden md:flex items-center justify-between w-96 mr-12 text-lg">
           {mainNav}
         </ul>
         <div className="md:hidden">
@@ -70,9 +70,11 @@ const GuestNavBar = () => {
         </div>
       </div>
       {!hidden ? (
-        <ul className="md:hidden flex-col w-full px-3 bg-stone-900 text-white">
-          {hiddenNav}
-        </ul>
+        <div className="md:hidden w-screen h-screen bg-black/60">
+          <ul className="md:hidden flex-col w-[60%] h-[40%] float-right bg-stone-900 text-white">
+            {hiddenNav}
+          </ul>
+        </div>
       ) : (
         <></>
       )}
