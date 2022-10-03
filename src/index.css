@@ -20,7 +20,11 @@
   }
 
   .clip.polygon.d-3 {
-    --tw-clip-polygon-d: 0 calc(100% - 2.25rem);
+    --tw-clip-polygon-d: 0 calc(50% - 2.5rem);
+  }
+
+  .clip.polygon.dp-3 {
+    --tw-clip-polygon-d: 0 calc(100% - 2.5rem);
   }
 
   .clip.polygon {

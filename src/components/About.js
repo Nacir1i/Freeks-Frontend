@@ -20,9 +20,9 @@ const About = () => {
   return (
     <div
       id="about"
-      className="bg-bag h-[39rem] flex justify-center md:justify-around items-center flex-col md:flex-row"
+      className="bg-bag h-[39rem] flex justify-center items-center flex-col md:flex-row"
     >
-      <div className="w-[80%] md:h-[50%] md:w-[42rem]">
+      <div className="w-[80%] h-full md:w-[42rem] flex flex-col justify-center ">
         <h1 className="font-semibold text-2xl md:text-4xl text-center">
           What is Freekscop :
         </h1>
@@ -35,7 +35,11 @@ const About = () => {
           <ul className="pl-4">{itemsList}</ul>
         </div>
       </div>
-      <img src={AboutImg} alt="#" className="w-[250px] md:w-[34rem] mt-8" />
+      <img
+        src={AboutImg}
+        alt="#"
+        className="w-[250px] md:w-[34rem] my-8 ml-8"
+      />
     </div>
   );
 };
