@@ -30,4 +30,12 @@
   .clip.polygon {
     clip-path: polygon(var(--tw-clip-polygon));
   }
+
+  .clip.polygon.c-3 {
+    --tw-clip-polygon-c: 100% calc(100% - 2.25rem);
+  }
+
+  .clip.polygon.cp-3 {
+    --tw-clip-polygon-c: 100% calc(100% - 3rem);
+  }
 }

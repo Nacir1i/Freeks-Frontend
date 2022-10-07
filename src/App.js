@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { axiosAPI } from "./api/axios";
+// import { axiosAPI } from "./api/axios";
 import UserNavBar from "./components/UserNavBar";
 import GuestNavBar from "./components/GuestNavBar";
 import Event from "./pages/event/Event";
@@ -30,26 +30,6 @@ const App = () => {
   let [user, setUser] = useState(null);
   const handlUser = (userData) => setUser(userData);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const cookie = document.cookie;
-    if (!cookie) {
-      return;
-    }
-    const fetchUser = async () => {
-      try {
-        const response = await axiosAPI({
-          method: "get",
-          url: "user/verifyToken",
-        });
-        const user = response.data;
-        handlUser(user);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchUser();
-  }, []);
 
   useEffect(() => {
     const handlNavigate = () => {

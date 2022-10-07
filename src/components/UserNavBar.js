@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
 import Logo from "./Logo";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const UserNavBar = () => {
   const { logout } = useContext(UserContext);
@@ -66,9 +66,9 @@ const UserNavBar = () => {
         </ul>
         <div className="md:hidden">
           {hidden ? (
-            <Bars3Icon className="w-9 mr-4" onClick={handleHidden} />
+            <AiOutlineMenu className="w-9 mr-4" onClick={handleHidden} />
           ) : (
-            <XMarkIcon className="w-9 mr-4" onClick={handleHidden} />
+            <AiOutlineClose className="w-9 mr-4" onClick={handleHidden} />
           )}
         </div>
       </div>

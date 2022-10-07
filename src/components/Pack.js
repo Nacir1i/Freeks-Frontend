@@ -1,11 +1,11 @@
 const Pack = ({ title, comment, offers, recommended }) => {
-  const offersList = offers.map((offer) => (
-    <li className="text-2xl">
+  const offersList = offers.map((offer, index) => (
+    <li key={index} className="text-2xl">
       <p>{offer}</p>
     </li>
   ));
   return (
-    <div className="w-80 h-72 md:h-96 bg-slate-700 my-8 md:m-8 flex flex-col justify-between items-center rounded-md">
+    <div className="w-80 h-72 md:h-96 bg-slate-700 mx-4 my-8 md:m-8 flex flex-col justify-between items-center rounded-md">
       {recommended ? (
         <div className="w-full h-12 bg-amber-400 flex items-center justify-center text-black font-semibold">
           Recommended

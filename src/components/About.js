@@ -1,5 +1,5 @@
 import AboutImg from "../imgs/illustration-gamer.png";
-import { CheckIcon } from "@heroicons/react/20/solid";
+import { FaCheck } from "react-icons/fa";
 
 const About = () => {
   const items = [
@@ -11,8 +11,8 @@ const About = () => {
     "100Mgb fibre optic internet",
   ];
   const itemsList = items.map((item, index) => (
-    <li className="flex mt-3" key={index}>
-      <CheckIcon className="mr-2 w-5" />
+    <li className="flex mt-3 items-center" key={index}>
+      <FaCheck className="mr-2 w-5" />
       <p>{item}</p>
     </li>
   ));
