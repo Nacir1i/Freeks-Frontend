@@ -33,12 +33,12 @@ const GuestNavBar = () => {
     },
     {
       text: "Login",
-      path: "user/login",
+      path: "",
       scroll: false,
     },
     {
       text: "Signup",
-      path: "user/signup",
+      path: "",
       scroll: false,
     },
   ];
@@ -52,7 +52,7 @@ const GuestNavBar = () => {
           smooth={true}
           offset={-100}
           duration={500}
-          className="group text-white transition duration-500"
+          className="group text-white transition duration-500 cursor-pointer"
         >
           {link.text}
           <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
@@ -60,7 +60,7 @@ const GuestNavBar = () => {
       ) : (
         <NavLink
           to={`/${link.path}`}
-          className="group text-white transition duration-500"
+          className="group text-white transition duration-500 cursor-pointer"
         >
           {link.text}
           <span className="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>

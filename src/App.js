@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 // import { axiosAPI } from "./api/axios";
 import UserNavBar from "./components/UserNavBar";
 import GuestNavBar from "./components/GuestNavBar";
-import Event from "./pages/event/Event";
 import Home from "./pages/Home";
+import Event from "./pages/event/Event";
 import Login from "./pages/user/Login";
 import Signup from "./pages/user/Signup";
 import About from "./pages/About";
@@ -35,7 +35,6 @@ const App = () => {
     const handlNavigate = () => {
       navigate("/");
     };
-
     handlNavigate();
   }, [user]);
 
