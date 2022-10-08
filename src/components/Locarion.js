@@ -1,40 +1,23 @@
-import { useState } from "react";
-import Map from "../imgs/map.png";
+import Map from "./Map";
 
 function Location() {
-  const [hidden, setHidden] = useState(true);
-
-  const handleHidden = () => {
-    setHidden((prev) => !prev);
-  };
-
   return (
-    <div
-      id="contact"
-      className="w-full h-[44rem] md:h-[45rem] bg-emerald-900 relative flex justify-center items-center"
-    >
+    <div id="contact" className="relative w-full bg-emerald-900">
       <section className="absolute top-0 w-full h-14 md:h-24 bg-slate-900 clip polygon c-3 md:cp-3"></section>
-      <div className="w-full h-full flex flex-col justify-center items-center">
-        <h1 className="font-semibold my-4 text-2xl md:text-4xl text-center">
-          How to get in touch with us :
-        </h1>
-        <div className="w-full mt-4 flex flex-wrap items-center justify-around">
-          <div
-            className="p-2 m-2 bg-red-700 border-2 cursor-pointer"
-            onClick={handleHidden}
-          >
-            <img
-              src={Map}
-              alt="map"
-              className="w-[25rem] md:w-[40rem] rounded-md"
-            />
+      <div className="w-full p-4 h-full grid justify-items-center grid-rows-6">
+        <div className="flex md:mt-24 items-center justify-center row-span-1 ">
+          <h1 className="font-semibold text-2xl md:text-4xl text-center">
+            How to get in touch with us :
+          </h1>
+        </div>
+        <div className="w-full flex flex-wrap items-center justify-around row-span-5">
+          <div className="p-1 w-[95%] md:w-[50%] bg-red-700 border-2">
+            <Map />
           </div>
           <div className="w-[70%] md:w-[30%]">
             <div className="my-4">
               <h1 className="text-2xl">Location : </h1>
-              <p className="text-lg">
-                Contoso Ltd 215 E Tasman Dr Po Box 65502
-              </p>
+              <p className="text-lg">Imm Yousra, Hay Hassani, Inzgane, 80000</p>
             </div>
             <div className="my-4">
               <h1 className="text-2xl">Email Adress : </h1>
@@ -47,18 +30,6 @@ function Location() {
           </div>
         </div>
       </div>
-      {hidden ? (
-        <></>
-      ) : (
-        <div
-          className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-black/60"
-          onClick={handleHidden}
-        >
-          <div className="p-2 mt-4 bg-red-700 border-2 cursor-pointer">
-            <img src={Map} alt="map" className="w-[35rem] md:w-[65rem]" />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
