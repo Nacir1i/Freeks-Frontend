@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { UserContext } from "../App";
 import Logo from "./Logo";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
@@ -38,26 +38,27 @@ const UserNavBar = () => {
   ];
   const mainNav = links.map((link, i) => (
     <li key={i}>
-      <Link
+      <HashLink
+        smooth
         to={`/${link.path}`}
         onClick={link.event}
         className="group text-white transition duration-500"
       >
         {link.text}
         <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
-      </Link>
+      </HashLink>
     </li>
   ));
   const hiddenNav = links.map((link, i) => (
-    <li key={i} className="w-full py-4 text-center border-b-2 border-zinc-200">
-      <Link
+    <li key={i} className="my-4 py-4 text-center" onClick={handleHidden}>
+      <HashLink
+        smooth
         to={`/${link.path}`}
         onClick={link.event}
-        className="group text-white transition duration-500"
+        className="group text-white"
       >
         {link.text}
-        <span className="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
-      </Link>
+      </HashLink>
     </li>
   ));
   return (
@@ -69,16 +70,24 @@ const UserNavBar = () => {
         </ul>
         <div className="md:hidden">
           {hidden ? (
-            <AiOutlineMenu className="w-9 mr-4" onClick={handleHidden} />
+            <AiOutlineMenu
+              className="w-9 mr-4 text-3xl"
+              onClick={handleHidden}
+            />
           ) : (
-            <AiOutlineClose className="w-9 mr-4" onClick={handleHidden} />
+            <AiOutlineClose
+              className="w-9 mr-4 text-3xl"
+              onClick={handleHidden}
+            />
           )}
         </div>
       </div>
       {!hidden ? (
-        <ul className="md:hidden flex-col w-full px-3 bg-stone-900 text-white">
-          {hiddenNav}
-        </ul>
+        <div className="md:hidden w-screen h-screen bg-black/60">
+          <ul className="md:hidden flex-col w-[60%] float-right bg-stone-900 text-white">
+            {hiddenNav}
+          </ul>
+        </div>
       ) : (
         <></>
       )}

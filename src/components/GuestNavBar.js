@@ -34,7 +34,7 @@ const GuestNavBar = () => {
     },
     {
       text: "Login",
-      path: "Home#about",
+      path: "user/login",
     },
     {
       text: "Signup",
@@ -56,7 +56,7 @@ const GuestNavBar = () => {
     </li>
   ));
   const hiddenNav = links.map((link, i) => (
-    <li key={i} className="my-4 py-4 text-center">
+    <li key={i} className="my-4 py-4 text-center" onClick={handleHidden}>
       <HashLink
         smooth
         to={`/${link.path}`}
