@@ -1,8 +1,13 @@
 import { useState } from "react";
-import { Link as NavLink } from "react-router-dom";
-import { Link as ScrollLink } from "react-scroll";
+import { HashLink } from "react-router-hash-link";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import Logo from "./Logo";
+
+const scrollWithOffset = (el) => {
+  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+  const yOffset = -70;
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+};
 
 const GuestNavBar = () => {
   let [hidden, setHidden] = useState(true);
@@ -13,79 +18,53 @@ const GuestNavBar = () => {
   const links = [
     {
       text: "Home",
-      path: "home",
-      scroll: true,
+      path: "Home#home",
     },
     {
       text: "About",
-      path: "about",
-      scroll: true,
+      path: "Home#about",
     },
     {
       text: "Pricing",
-      path: "packs",
-      scroll: true,
+      path: "Home#packs",
     },
     {
       text: "Cantact",
-      path: "contact",
-      scroll: true,
+      path: "Home#contact",
     },
     {
       text: "Login",
-      path: "",
-      scroll: false,
+      path: "Home#about",
     },
     {
       text: "Signup",
-      path: "",
-      scroll: false,
+      path: "user/signup",
     },
   ];
 
   const mainNav = links.map((link, i) => (
     <li key={i} className="w-24 flex justify-center">
-      {link.scroll ? (
-        <ScrollLink
-          to={`${link.path}`}
-          spy={true}
-          smooth={true}
-          offset={-100}
-          duration={500}
-          className="group text-white transition duration-500 cursor-pointer"
-        >
-          {link.text}
-          <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
-        </ScrollLink>
-      ) : (
-        <NavLink
-          to={`/${link.path}`}
-          className="group text-white transition duration-500 cursor-pointer"
-        >
-          {link.text}
-          <span className="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
-        </NavLink>
-      )}
+      <HashLink
+        smooth
+        to={`${link.path}`}
+        scroll={(el) => scrollWithOffset(el)}
+        className="group text-white transition duration-500 cursor-pointer"
+      >
+        {link.text}
+        <span className="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
+      </HashLink>
     </li>
   ));
   const hiddenNav = links.map((link, i) => (
     <li key={i} className="my-4 py-4 text-center">
-      {link.scroll ? (
-        <ScrollLink
-          to={`${link.path}`}
-          spy={true}
-          smooth={true}
-          offset={-100}
-          duration={500}
-          className="group text-white"
-        >
-          {link.text}
-        </ScrollLink>
-      ) : (
-        <NavLink to={`/${link.path}`} className="group text-white">
-          {link.text}
-        </NavLink>
-      )}
+      <HashLink
+        smooth
+        to={`/${link.path}`}
+        scroll={(el) => scrollWithOffset(el)}
+        className="group text-white"
+      >
+        {link.text}
+      </HashLink>
     </li>
   ));
   return (

@@ -30,7 +30,10 @@ const UserNavBar = () => {
     {
       text: "logout",
       path: "",
-      event: () => logout(),
+      event: () => {
+        console.log("test");
+        logout();
+      },
     },
   ];
   const mainNav = links.map((link, i) => (
@@ -58,7 +61,7 @@ const UserNavBar = () => {
     </li>
   ));
   return (
-    <div className="fixed w-screen md:h-24 h-[70px] bg-stone-900 text-white">
+    <div className="fixed z-50 w-screen md:h-24 h-[70px] bg-stone-900 text-white">
       <div className="w-full h-full flex items-center justify-between ">
         <Logo />
         <ul className="hidden md:flex items-center justify-between w-96 mr-12 text-lg">
