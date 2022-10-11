@@ -45,7 +45,7 @@ const Signup = () => {
     }
   };
   const onSubmit = (data) => {
-    createUser(data);
+    // createUser(data);
     console.log(data);
   };
   return (
