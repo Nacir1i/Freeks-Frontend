@@ -29,7 +29,7 @@ const GuestNavBar = () => {
       path: "Home#packs",
     },
     {
-      text: "Cantact",
+      text: "Contact",
       path: "Home#contact",
     },
     {

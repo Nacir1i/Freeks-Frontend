@@ -8,6 +8,11 @@ module.exports = {
       },
       colors: {
         bag: "#35013f",
+        db: "#222831",
+        porp: "#6B21A8",
+      },
+      aspectRatio: {
+        vertical: 300 / 1080,
       },
     },
     screens: {

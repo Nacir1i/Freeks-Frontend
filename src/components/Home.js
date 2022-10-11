@@ -2,7 +2,7 @@ const Home = () => {
   return (
     <div
       id="home"
-      className="relative w-full h-[70%] pt-10 md:h-full font-bold text-3xl bg-[url('https://i.imgur.com/5owIVUe.jpeg')] md:bg-[url('https://i.imgur.com/nedGnX5.jpeg')] bg-no-repeat bg-cover bg-center bg-local flex flex-col items-center justify-center"
+      className="relative w-full h-[70%] pt-10 md:h-full font-bold text-3xl bg-[url('./imgs/banner3.jpg')] md:bg-[url('./imgs/banner2.jpg')] bg-no-repeat bg-cover bg-center bg-local flex flex-col items-center justify-center"
     >
       <h1 className="md:text-7xl">WELCOME TO FREEKS</h1>
       <div className="w-[70%]">

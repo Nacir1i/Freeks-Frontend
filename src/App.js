@@ -84,6 +84,7 @@ const App = () => {
               <Route path="signup" element={<Signup />} />
             </Route>
             <Route path="/shop" element={<Shop />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </div>
       </UserContext.Provider>
