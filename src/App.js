@@ -31,6 +31,9 @@ const App = () => {
   let [user, setUser] = useState(null);
   const handlUser = (userData) => setUser(userData);
   const navigate = useNavigate();
+  const handlNavigate = () => {
+    navigate("/");
+  };
 
   useEffect(() => {
     const authToken = localStorage.getItem("authToken");
@@ -54,22 +57,17 @@ const App = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const handlNavigate = () => {
-      navigate("/");
-    };
-    handlNavigate();
-  }, [user]);
-
   const login = (user, authToken) => {
     handlUser(user);
     setAuthToken(authToken);
-    console.log("user : ", user);
+    handlNavigate();
   };
   const logout = () => {
     handlUser(null);
     deleteAuthToken();
+    handlNavigate();
   };
+
   return (
     <>
       <UserContext.Provider value={{ logout, login, user }}>
@@ -84,7 +82,6 @@ const App = () => {
               <Route path="signup" element={<Signup />} />
             </Route>
             <Route path="/shop" element={<Shop />} />
-            <Route path="*" element={<Home />} />
           </Routes>
         </div>
       </UserContext.Provider>

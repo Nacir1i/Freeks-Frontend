@@ -107,7 +107,7 @@ const Signup = () => {
             required={true}
           />
           <Button
-            className="w-[50%] mt-4 p-2 bg-red-500 rounded-md"
+            className="w-[50%] mt-4 p-2 bg-porp rounded-md"
             text="Create Account"
             type="submit"
           />
