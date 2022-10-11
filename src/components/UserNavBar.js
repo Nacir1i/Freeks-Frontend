@@ -4,6 +4,12 @@ import { UserContext } from "../App";
 import Logo from "./Logo";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
+const scrollWithOffset = (el) => {
+  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+  const yOffset = -70;
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+};
+
 const UserNavBar = () => {
   const { logout } = useContext(UserContext);
   let [hidden, setHidden] = useState(true);
@@ -22,8 +28,17 @@ const UserNavBar = () => {
       path: "about",
       event: () => {},
     },
+    ,
     {
-      text: "Event",
+      text: "Pricing",
+      path: "Home#packs",
+    },
+    {
+      text: "Contact",
+      path: "Home#contact",
+    },
+    {
+      text: "Events",
       path: "events",
       event: () => {},
     },
@@ -37,15 +52,16 @@ const UserNavBar = () => {
     },
   ];
   const mainNav = links.map((link, i) => (
-    <li key={i}>
+    <li key={i} className="w-24 flex justify-center">
       <HashLink
         smooth
-        to={`/${link.path}`}
+        to={`${link.path}`}
+        scroll={(el) => scrollWithOffset(el)}
         onClick={link.event}
-        className="group text-white transition duration-500"
+        className="group text-white transition duration-500 cursor-pointer"
       >
         {link.text}
-        <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
+        <span className="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
       </HashLink>
     </li>
   ));
@@ -54,6 +70,7 @@ const UserNavBar = () => {
       <HashLink
         smooth
         to={`/${link.path}`}
+        scroll={(el) => scrollWithOffset(el)}
         onClick={link.event}
         className="group text-white"
       >
@@ -65,7 +82,7 @@ const UserNavBar = () => {
     <div className="fixed z-50 w-screen md:h-24 h-[70px] bg-stone-900 text-white">
       <div className="w-full h-full flex items-center justify-between ">
         <Logo />
-        <ul className="hidden md:flex items-center justify-between w-96 mr-12 text-lg">
+        <ul className="hidden md:flex items-center justify-between mr-12 text-lg">
           {mainNav}
         </ul>
         <div className="md:hidden">

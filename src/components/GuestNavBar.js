@@ -33,6 +33,11 @@ const GuestNavBar = () => {
       path: "Home#contact",
     },
     {
+      text: "Events",
+      path: "events",
+      event: () => {},
+    },
+    {
       text: "Login",
       path: "user/login",
     },
