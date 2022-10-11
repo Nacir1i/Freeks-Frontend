@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { HashLink as Link } from "react-router-hash-link";
+import { Link } from "react-router-dom";
 import { axiosAPI } from "../../api/axios";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
@@ -85,7 +85,7 @@ const Signup = () => {
         </form>
         <p className="mt-4">
           Or{" "}
-          <Link to="user/signup" className="text-yellow-300">
+          <Link to="/user/signup" className="text-yellow-300">
             SIGNUP
           </Link>{" "}
           if you do not have an accout

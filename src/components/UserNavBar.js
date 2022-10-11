@@ -28,7 +28,6 @@ const UserNavBar = () => {
       path: "about",
       event: () => {},
     },
-    ,
     {
       text: "Pricing",
       path: "Home#packs",

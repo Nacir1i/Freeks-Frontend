@@ -8,6 +8,7 @@ import Event from "./pages/event/Event";
 import Login from "./pages/user/Login";
 import Signup from "./pages/user/Signup";
 import Shop from "./pages/Shop";
+import Error from "./pages/Error";
 
 export const UserContext = React.createContext();
 
@@ -82,6 +83,7 @@ const App = () => {
               <Route path="signup" element={<Signup />} />
             </Route>
             <Route path="/shop" element={<Shop />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </div>
       </UserContext.Provider>
