@@ -2,7 +2,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-full h-24 md:h-32 p-4 bg-stone-900 grid grid-flow-col grid-cols-7">
+    <footer className="bottom-0 left-0 w-full h-24 md:h-32 p-4 bg-stone-900 grid grid-flow-col grid-cols-7">
       <div className="hidden justify-self-start md:flex flex-col justify-center col-span-1">
         <h1 className="text-2xl">Freeks Corperation Ⓒ.</h1>
         <p className="text-sm">Develepment Evnirment</p>

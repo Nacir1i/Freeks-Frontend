@@ -1,14 +1,16 @@
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
 import { axiosAPI } from "./api/axios";
 import UserNavBar from "./components/UserNavBar";
 import GuestNavBar from "./components/GuestNavBar";
+import Footer from "./components/Footer";
+import Loading from "./components/Loading";
 import Home from "./pages/Home";
-import Event from "./pages/event/Event";
-import Login from "./pages/user/Login";
-import Signup from "./pages/user/Signup";
-import Shop from "./pages/Shop";
-import Error from "./pages/Error";
+const Event = lazy(() => import("./pages/event/Event"));
+const Login = lazy(() => import("./pages/user/Login"));
+const Signup = lazy(() => import("./pages/user/Signup"));
+const Shop = lazy(() => import("./pages/Shop"));
+const Error = lazy(() => import("./pages/Error"));
 
 export const UserContext = React.createContext();
 
@@ -39,6 +41,7 @@ const App = () => {
   useEffect(() => {
     const authToken = localStorage.getItem("authToken");
     if (authToken) {
+      console.log("test");
       const fetchUser = async () => {
         try {
           const response = await axiosAPI({
@@ -77,14 +80,50 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
-            <Route path="/events" element={<Event />} />
+            <Route
+              path="/events"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Event />
+                </Suspense>
+              }
+            />
             <Route path="/user">
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<Signup />} />
+              <Route
+                path="login"
+                element={
+                  <Suspense fallback={<Loading />}>
+                    <Login />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="signup"
+                element={
+                  <Suspense fallback={<Loading />}>
+                    <Signup />
+                  </Suspense>
+                }
+              />
             </Route>
-            <Route path="/shop" element={<Shop />} />
-            <Route path="*" element={<Error />} />
+            <Route
+              path="/shop"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Shop />
+                </Suspense>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Error />
+                </Suspense>
+              }
+            />
           </Routes>
+          <Footer />
         </div>
       </UserContext.Provider>
     </>
