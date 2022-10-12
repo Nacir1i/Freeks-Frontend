@@ -17,7 +17,6 @@ export const UserContext = React.createContext();
 const deleteAuthToken = () => {
   const authToken = document.cookie["authToken"];
   localStorage.clear();
-  if (!authToken) return;
   document.cookie = `authToken=${authToken}; max-age=-69`;
   console.log("cookie deleted");
 };
@@ -79,7 +78,6 @@ const App = () => {
         <div className="h-screen w-sreen text-white">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Home" element={<Home />} />
             <Route
               path="/events"
               element={

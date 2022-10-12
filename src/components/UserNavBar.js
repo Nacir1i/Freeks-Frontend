@@ -20,21 +20,21 @@ const UserNavBar = () => {
   const links = [
     {
       text: "Home",
-      path: "",
+      path: "/#home",
       event: () => {},
     },
     {
       text: "About",
-      path: "about",
+      path: "/#about",
       event: () => {},
     },
     {
       text: "Pricing",
-      path: "Home#packs",
+      path: "/#packs",
     },
     {
       text: "Contact",
-      path: "Home#contact",
+      path: "/#contact",
     },
     {
       text: "Events",

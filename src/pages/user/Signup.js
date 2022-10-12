@@ -5,9 +5,12 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import Loading from "../../components/LoadingSVG";
 
 const Signup = () => {
-  let [error, setError] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const { login } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
 
@@ -17,11 +20,16 @@ const Signup = () => {
       setError(null);
     }, 5000);
   };
+  const handlIsLoading = (state) => {
+    setIsLoading(state);
+  };
 
   const createUser = async (data) => {
+    handlIsLoading(true);
     const userData = data;
     if (userData.password !== userData.confirm) {
       handlError("Please confirm Password");
+      handlIsLoading(false);
       return;
     }
     try {
@@ -37,15 +45,16 @@ const Signup = () => {
       const resData = response.data;
       login(resData.user, resData.token);
     } catch (error) {
-      if (error.response.resData) {
-        handlError(error.response.resData.message);
+      if (error.response.data) {
+        handlError(error.response.data.message);
       } else {
         handlError(error.message);
       }
     }
+    handlIsLoading(false);
   };
   const onSubmit = (data) => {
-    // createUser(data);
+    createUser(data);
     console.log(data);
   };
   return (
@@ -61,8 +70,15 @@ const Signup = () => {
       </div>
       <section className="hidden md:block layer1 aspect-vertical w-[19rem] h-full"></section>
       <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center">
+        {isLoading ? (
+          <div className="absolute z-49 top-28 md:top-44 left-auto w-[80%] md:w-96 h-16 p-2 flex items-center justify-center">
+            <Loading className="mr-3 w-5 h-5 md:h-8 md:w-8 animate-spin text-yellow-300" />
+          </div>
+        ) : (
+          <></>
+        )}
         {error ? (
-          <div className="absolute z-50 top-28 left-auto w-[80%] md:w-96 h-16 p-2 flex items-center justify-center bg-red-400 rounded-sm text-red-800 font-bold">
+          <div className="absolute z-50 top-28 md:top-44 left-auto w-[80%] md:w-96 h-16 p-2 flex items-center justify-center bg-red-400 rounded-sm text-red-800 font-bold">
             {error}
           </div>
         ) : (
