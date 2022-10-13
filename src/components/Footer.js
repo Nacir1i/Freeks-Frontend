@@ -5,7 +5,6 @@ const Footer = () => {
     <footer className="bottom-0 left-0 w-full h-24 md:h-32 p-4 bg-stone-900 grid grid-flow-col grid-cols-7">
       <div className="hidden justify-self-start md:flex flex-col justify-center col-span-1">
         <h1 className="text-2xl">Freeks Corperation Ⓒ.</h1>
-        <p className="text-sm">Develepment Evnirment</p>
         <p className="text-sm">Ayoub Idouadi - Taoufiq Naciri</p>
       </div>
       <ul className="flex justify-center items-center col-span-7 md:col-span-6">

@@ -70,13 +70,6 @@ const Signup = () => {
       </div>
       <section className="hidden md:block layer1 aspect-vertical w-[19rem] h-full"></section>
       <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center">
-        {isLoading ? (
-          <div className="absolute z-49 top-28 md:top-44 left-auto w-[80%] md:w-96 h-16 p-2 flex items-center justify-center">
-            <Loading className="mr-3 w-5 h-5 md:h-8 md:w-8 animate-spin text-yellow-300" />
-          </div>
-        ) : (
-          <></>
-        )}
         {error ? (
           <div className="absolute z-50 top-28 md:top-44 left-auto w-[80%] md:w-96 h-16 p-2 flex items-center justify-center bg-red-400 rounded-sm text-red-800 font-bold">
             {error}
@@ -122,11 +115,21 @@ const Signup = () => {
             title="Confirm Password :"
             required={true}
           />
-          <Button
-            className="w-[50%] mt-4 p-2 bg-porp rounded-md"
-            text="Create Account"
-            type="submit"
-          />
+          {isLoading ? (
+            <Button
+              className="w-[100%] mt-4 p-2 bg-porp-2 rounded-md flex justify-center cursor-default"
+              text={
+                <Loading className="mr-3 w-3 h-3 md:h-6 md:w-6 animate-spin text-purple-900" />
+              }
+              type="none"
+            />
+          ) : (
+            <Button
+              className="w-[100%] mt-4 p-2 bg-porp rounded-md"
+              text="Login"
+              type="submit"
+            />
+          )}
         </form>
         <p className="mt-4">
           Or{" "}

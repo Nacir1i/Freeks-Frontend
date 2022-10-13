@@ -37,28 +37,27 @@ const App = () => {
     navigate("/");
   };
 
-  useEffect(() => {
-    const authToken = localStorage.getItem("authToken");
-    if (authToken) {
-      console.log("test");
-      const fetchUser = async () => {
-        try {
-          const response = await axiosAPI({
-            method: "get",
-            headers: {
-              authorization: `Bearer ${authToken}`,
-            },
-            url: "user/verifyHeaderToken",
-          });
-          const user = response.data;
-          handlUser(user);
-        } catch (err) {
-          console.error(err);
-        }
-      };
-      fetchUser();
-    }
-  }, []);
+  // useEffect(() => {
+  //   const authToken = localStorage.getItem("authToken");
+  //   if (authToken) {
+  //     const fetchUser = async () => {
+  //       try {
+  //         const response = await axiosAPI({
+  //           method: "get",
+  //           headers: {
+  //             authorization: `Bearer ${authToken}`,
+  //           },
+  //           url: "user/verifyHeaderToken",
+  //         });
+  //         const user = response.data;
+  //         handlUser(user);
+  //       } catch (err) {
+  //         console.error(err);
+  //       }
+  //     };
+  //     fetchUser();
+  //   }
+  // }, []);
 
   const login = (user, authToken) => {
     handlUser(user);
@@ -112,14 +111,7 @@ const App = () => {
                 </Suspense>
               }
             />
-            <Route
-              path="*"
-              element={
-                <Suspense fallback={<Loading />}>
-                  <Error />
-                </Suspense>
-              }
-            />
+            <Route path="*" element={<Error />} />
           </Routes>
           <Footer />
         </div>

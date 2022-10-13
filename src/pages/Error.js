@@ -8,7 +8,7 @@ const Error = () => {
       </h1>
       <p className="my-4">
         Click
-        <Link to="/Home" className="text-lg mx-2 text-yellow-400">
+        <Link to="/" className="text-lg mx-2 text-yellow-400">
           HERE
         </Link>
         to navigate to home page

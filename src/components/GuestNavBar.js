@@ -18,19 +18,19 @@ const GuestNavBar = () => {
   const links = [
     {
       text: "Home",
-      path: "Home#home",
+      path: "/#home",
     },
     {
       text: "About",
-      path: "Home#about",
+      path: "/#about",
     },
     {
       text: "Pricing",
-      path: "Home#packs",
+      path: "/#packs",
     },
     {
       text: "Contact",
-      path: "Home#contact",
+      path: "/#contact",
     },
     {
       text: "Events",
@@ -89,7 +89,7 @@ const GuestNavBar = () => {
       </div>
       {!hidden ? (
         <div className="md:hidden w-screen h-screen bg-black/60">
-          <ul className="md:hidden flex-col w-[60%] float-right bg-stone-900 text-white">
+          <ul className="md:hidden w-[60%] h-full flex-col float-right bg-stone-900 text-white">
             {hiddenNav}
           </ul>
         </div>

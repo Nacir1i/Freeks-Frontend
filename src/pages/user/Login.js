@@ -52,13 +52,6 @@ const Signup = () => {
   return (
     <div className="w-full h-full flex justify-center items-center bg-stone-800">
       <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center">
-        {isLoading ? (
-          <div className="absolute z-49 top-28 md:top-44 left-auto w-[80%] md:w-96 h-16 p-2 flex items-center justify-center">
-            <Loading className="mr-3 w-5 h-5 md:h-8 md:w-8 animate-spin text-yellow-300" />
-          </div>
-        ) : (
-          <></>
-        )}
         {error ? (
           <div className="absolute z-50 top-28 md:top-44 left-auto w-[80%] md:w-96 h-16 p-2 flex items-center justify-center bg-red-400 rounded-sm text-red-800 font-bold">
             {error}
@@ -90,18 +83,28 @@ const Signup = () => {
             title="Password :"
             required={true}
           />
-          <Button
-            className="w-[50%] mt-4 p-2 bg-porp rounded-md"
-            text="Login"
-            type="submit"
-          />
+          {isLoading ? (
+            <Button
+              className="w-[100%] mt-4 p-2 bg-porp-2 rounded-md flex justify-center cursor-default"
+              text={
+                <Loading className="mr-3 w-3 h-3 md:h-6 md:w-6 animate-spin text-purple-900" />
+              }
+              type="none"
+            />
+          ) : (
+            <Button
+              className="w-[100%] mt-4 p-2 bg-porp rounded-md"
+              text="Login"
+              type="submit"
+            />
+          )}
         </form>
         <p className="mt-4">
           Or{" "}
           <Link to="/user/signup" className="text-yellow-300">
             SIGNUP
           </Link>{" "}
-          if you do not have an accout
+          if you do not have an account
         </p>
       </div>
       <section className="hidden md:block layer2 aspect-vertical w-[19rem] h-full"></section>
@@ -110,7 +113,7 @@ const Signup = () => {
           <h1 className="text-3xl">Login</h1>
           <p className="text-xl">
             Having an accout will give you access to more content, such as
-            tournoments
+            tournaments
           </p>
         </div>
       </div>

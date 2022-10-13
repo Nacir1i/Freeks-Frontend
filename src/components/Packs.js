@@ -13,13 +13,13 @@ const Packs = () => {
       <div className="flex flex-wrap justify-center">
         <Pack
           title="Standard Packs"
-          comment="some meaningfull text"
+          comment="standard pack for standard prices"
           offers={["1H -----> 10DHS", "5H -----> 40DHS", "All-Day Pass 75DH"]}
           recommended={true}
         />
         <Pack
           title="Mega Packs"
-          comment="some meaningfull text"
+          comment="best value for your money"
           offers={[
             "15H -----> 130DHS",
             "30H -----> 240DHS",

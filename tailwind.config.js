@@ -10,6 +10,7 @@ module.exports = {
         bag: "#35013f",
         db: "#222831",
         porp: "#6B21A8",
+        "porp-2": "#9896f1",
       },
       aspectRatio: {
         vertical: 300 / 1080,

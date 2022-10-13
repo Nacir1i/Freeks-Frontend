@@ -12,7 +12,7 @@ function Location() {
         </div>
         <div className="w-full flex flex-wrap items-center justify-around row-span-5">
           <div className="p-1 w-[95%] md:w-[50%] bg-red-700 border-2">
-            {/* <Map /> */}
+            <Map />
           </div>
           <div className="w-[70%] md:w-[30%]">
             <div className="my-4">
