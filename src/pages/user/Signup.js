@@ -152,7 +152,7 @@ const Signup = () => {
           <Link to="/user/login" className="text-yellow-300">
             LOGIN
           </Link>{" "}
-          if you have an accout
+          if you have an account
         </p>
       </div>
     </div>

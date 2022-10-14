@@ -11,7 +11,7 @@ const Home = () => {
           !
         </p>
       </div>
-      <div className="absolute bottom-0 w-full h-10 md:h-24 bg-bag clip polygon bp-3 md:b-3"></div>
+      <div className="absolute bottom-[-1px] w-full h-10 md:h-24 bg-bag clip polygon bp-3 md:b-3"></div>
     </div>
   );
 };

@@ -14,20 +14,20 @@ const Error = lazy(() => import("./pages/Error"));
 
 export const UserContext = React.createContext();
 
-const deleteAuthToken = () => {
-  const authToken = document.cookie["authToken"];
-  localStorage.clear();
-  document.cookie = `authToken=${authToken}; max-age=-69`;
-  console.log("cookie deleted");
-};
+// const setAuthToken = (token) => {
+//   deleteAuthToken();
+//   if (!token) return;
+//   document.cookie = `authToken=${token}; max-age=259200`;
+//   localStorage.setItem("authToken", token);
+//   console.log("cookie created");
+// };
 
-const setAuthToken = (token) => {
-  deleteAuthToken();
-  if (!token) return;
-  document.cookie = `authToken=${token}; max-age=259200`;
-  localStorage.setItem("authToken", token);
-  console.log("cookie created");
-};
+// const deleteAuthToken = () => {
+//   const authToken = document.cookie["authToken"];
+//   localStorage.clear();
+//   document.cookie = `authToken=${authToken}; max-age=-69`;
+//   console.log("cookie deleted");
+// };
 
 const App = () => {
   let [user, setUser] = useState(null);
@@ -61,12 +61,12 @@ const App = () => {
 
   const login = (user, authToken) => {
     handlUser(user);
-    setAuthToken(authToken);
+    // setAuthToken(authToken);
     handlNavigate();
   };
   const logout = () => {
     handlUser(null);
-    deleteAuthToken();
+    // deleteAuthToken();
     handlNavigate();
   };
 
@@ -74,7 +74,7 @@ const App = () => {
     <>
       <UserContext.Provider value={{ logout, login, user }}>
         {user ? <UserNavBar /> : <GuestNavBar />}
-        <div className="h-screen w-sreen text-white">
+        <div className="h-screen w-sreen bg-bag text-white">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
