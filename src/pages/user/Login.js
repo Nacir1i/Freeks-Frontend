@@ -1,4 +1,6 @@
 import { useContext, useState } from "react";
+import { MdAlternateEmail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { axiosAPI } from "../../api/axios";
 import { useForm } from "react-hook-form";
@@ -80,6 +82,9 @@ const Signup = () => {
             name="email"
             type="email"
             title="Email :"
+            icon={
+              <MdAlternateEmail className="w-[15%] bg-white text-black text-2xl" />
+            }
           />
           {errors.email && (
             <p className="text-red-500">{errors.email.message}</p>
@@ -89,6 +94,9 @@ const Signup = () => {
             name="password"
             type="password"
             title="Password :"
+            icon={
+              <RiLockPasswordLine className="w-[15%] bg-white text-black text-2xl" />
+            }
           />
           {errors.password && (
             <p className="text-red-500">{errors.password.message}</p>

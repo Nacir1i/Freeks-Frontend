@@ -1,4 +1,7 @@
 import { useContext, useState } from "react";
+import { AiOutlineUser } from "react-icons/ai";
+import { MdAlternateEmail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { axiosAPI } from "../../api/axios";
 import { useForm } from "react-hook-form";
@@ -98,6 +101,9 @@ const Signup = () => {
             name="username"
             type="text"
             title="Username :"
+            icon={
+              <AiOutlineUser className="w-[15%] bg-white text-black text-2xl" />
+            }
           />
           {errors.username && (
             <p className="text-red-500">{errors.username.message}</p>
@@ -107,7 +113,9 @@ const Signup = () => {
             name="email"
             type="email"
             title="Email :"
-            required={true}
+            icon={
+              <MdAlternateEmail className="w-[15%] bg-white text-black text-2xl" />
+            }
           />
           {errors.email && (
             <p className="text-red-500">{errors.email.message}</p>
@@ -117,7 +125,9 @@ const Signup = () => {
             name="password"
             type="password"
             title="Password :"
-            required={true}
+            icon={
+              <RiLockPasswordLine className="w-[15%] bg-white text-black text-2xl" />
+            }
           />
           {errors.password && (
             <p className="text-red-500">{errors.password.message}</p>
@@ -127,7 +137,9 @@ const Signup = () => {
             name="confirm"
             type="password"
             title="Confirm Password :"
-            required={true}
+            icon={
+              <RiLockPasswordLine className="w-[15%] bg-white text-black text-2xl" />
+            }
           />
           {isLoading ? (
             <div className="w-[100%] mt-4 p-2 bg-porp-2 rounded-md flex justify-center cursor-default">
