@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { axiosAPI } from "./api/axios";
+// import { axiosAPI } from "./api/axios";
 import UserNavBar from "./components/UserNavBar";
 import GuestNavBar from "./components/GuestNavBar";
 import Footer from "./components/Footer";
@@ -37,27 +37,27 @@ const App = () => {
     navigate("/");
   };
 
-  // useEffect(() => {
-  //   const authToken = localStorage.getItem("authToken");
-  //   if (authToken) {
-  //     const fetchUser = async () => {
-  //       try {
-  //         const response = await axiosAPI({
-  //           method: "get",
-  //           headers: {
-  //             authorization: `Bearer ${authToken}`,
-  //           },
-  //           url: "user/verifyHeaderToken",
-  //         });
-  //         const user = response.data;
-  //         handlUser(user);
-  //       } catch (err) {
-  //         console.error(err);
-  //       }
-  //     };
-  //     fetchUser();
-  //   }
-  // }, []);
+  useEffect(() => {
+    //   const authToken = localStorage.getItem("authToken");
+    //   if (authToken) {
+    //     const fetchUser = async () => {
+    //       try {
+    //         const response = await axiosAPI({
+    //           method: "get",
+    //           headers: {
+    //             authorization: `Bearer ${authToken}`,
+    //           },
+    //           url: "user/verifyHeaderToken",
+    //         });
+    //         const user = response.data;
+    //         handlUser(user);
+    //       } catch (err) {
+    //         console.error(err);
+    //       }
+    //     };
+    //     fetchUser();
+    //   }
+  }, []);
 
   const login = (user, authToken) => {
     handlUser(user);
@@ -111,7 +111,7 @@ const App = () => {
                 </Suspense>
               }
             />
-            <Route path="*" element={<Error />} />
+            <Route path="/*" element={<Error />} />
           </Routes>
           <Footer />
         </div>

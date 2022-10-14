@@ -11,6 +11,7 @@ module.exports = {
         db: "#222831",
         porp: "#6B21A8",
         "porp-2": "#9896f1",
+        "porp-3": "#430f58",
       },
       aspectRatio: {
         vertical: 300 / 1080,

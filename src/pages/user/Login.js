@@ -4,14 +4,20 @@ import { axiosAPI } from "../../api/axios";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../App";
 import Input from "../../components/Input";
-import Button from "../../components/Button";
+// import Button from "../../components/Button";
 import Loading from "../../components/LoadingSVG";
 
 const Signup = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useContext(UserContext);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: "onChange",
+  });
 
   const handlError = (err) => {
     setError(err);
@@ -74,29 +80,35 @@ const Signup = () => {
             name="email"
             type="email"
             title="Email :"
-            required={true}
           />
+          {errors.email && (
+            <p className="text-red-500">{errors.email.message}</p>
+          )}
           <Input
             register={register}
             name="password"
             type="password"
             title="Password :"
-            required={true}
           />
+          {errors.password && (
+            <p className="text-red-500">{errors.password.message}</p>
+          )}
           {isLoading ? (
-            <Button
-              className="w-[100%] mt-4 p-2 bg-porp-2 rounded-md flex justify-center cursor-default"
-              text={
-                <Loading className="mr-3 w-3 h-3 md:h-6 md:w-6 animate-spin text-purple-900" />
-              }
-              type="none"
-            />
+            <div className="w-[100%] mt-4 p-2 bg-porp-2 rounded-md flex justify-center cursor-default">
+              <Loading className="mr-3 w-3 h-3 md:h-6 md:w-6 animate-spin text-purple-900" />
+            </div>
           ) : (
-            <Button
-              className="w-[100%] mt-4 p-2 bg-porp rounded-md"
-              text="Login"
+            <button
+              className={
+                isValid
+                  ? "w-[100%] mt-4 p-2 bg-porp rounded-md flex justify-center"
+                  : "w-[100%] mt-4 p-2 bg-porp-2 rounded-md flex justify-center cursor-default"
+              }
               type="submit"
-            />
+              disabled={!isValid}
+            >
+              Login
+            </button>
           )}
         </form>
         <p className="mt-4">
