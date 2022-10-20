@@ -25,9 +25,9 @@ const Signup = () => {
 
   const handlError = (err) => {
     setError(err);
-    setInterval(() => {
+    setTimeout(() => {
       setError(null);
-    }, 5000);
+    }, 3000);
   };
   const handlIsLoading = (state) => {
     setIsLoading(state);
@@ -68,7 +68,7 @@ const Signup = () => {
   };
   return (
     <div className="w-full h-full flex justify-center items-center bg-stone-800">
-      <div className="relative hidden w-1/2 h-full p-4 bg-porp bg-[url('./imgs/controller3.png')] bg-no-repeat bg-center md:flex items-end">
+      <div className="relative hidden w-1/2 h-full p-4 bg-porp bg-[url('./imgs/webp/controller3.webp')] bg-no-repeat bg-center md:flex items-end">
         <div className="w-full z-50">
           <h1 className="text-3xl">Account creation</h1>
           <p className="text-xl">

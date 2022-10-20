@@ -23,9 +23,9 @@ const Signup = () => {
 
   const handlError = (err) => {
     setError(err);
-    setInterval(() => {
+    setTimeout(() => {
       setError(null);
-    }, 5000);
+    }, 3000);
   };
   const handlIsLoading = (state) => {
     setIsLoading(state);
@@ -128,7 +128,7 @@ const Signup = () => {
         </p>
       </div>
       <section className="hidden md:block layer2 aspect-vertical w-[19rem] h-full"></section>
-      <div className="relative hidden w-1/2 h-full p-4 bg-porp bg-[url('./imgs/controller3.png')] bg-no-repeat bg-center md:flex items-end">
+      <div className="relative hidden w-1/2 h-full p-4 bg-porp bg-[url('./imgs/webp/controller3.webp')] bg-no-repeat bg-center md:flex items-end">
         <div className="w-full z-50 text-right">
           <h1 className="text-3xl">Login</h1>
           <p className="text-xl">
