@@ -1,20 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
-      backgroundImage: {
-        deskTop: "url('../imgs/banner2.jpg')",
-      },
       colors: {
-        bag: "#35013f",
-        db: "#222831",
-        porp: "#6B21A8",
-        "porp-2": "#9896f1",
-        "porp-3": "#430f58",
-      },
-      aspectRatio: {
-        vertical: 300 / 1080,
+        primary: "#242038",
+        secondary: "#231942",
+        third: "#5E548E",
       },
     },
     screens: {
@@ -22,7 +17,7 @@ module.exports = {
 
       md: "768px",
 
-      lg: "1024px",
+      lg: "1153px",
 
       xl: "1280px",
 

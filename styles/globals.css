@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  #__next {
+    @apply h-screen w-screen bg-slate-700;
+  }
+  html,
+  body {
+    @apply h-screen w-screen;
+  }
+}
