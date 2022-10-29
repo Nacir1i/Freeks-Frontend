@@ -4,7 +4,7 @@
 
 @layer components {
   #__next {
-    @apply h-screen w-screen bg-slate-700;
+    @apply h-screen w-screen bg-third;
   }
   html,
   body {
