@@ -7,7 +7,7 @@ import { useState } from "react";
 const links = [
   {
     text: "Home",
-    path: "/home",
+    path: "/",
   },
   {
     text: "About",
@@ -36,33 +36,62 @@ export default () => {
         className="group text-white transition duration-500 cursor-pointer"
       >
         {link.text}
-        {!hidden ? (
-          <span className="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
-        ) : (
-          <></>
-        )}
+        <span className="block max-w-0 md:group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
+      </Link>
+    </li>
+  ));
+
+  const hiddenLinkHandler = links.map((link, i) => (
+    <li key={i} className="my-4 py-4 text-center" onClick={handleHidden}>
+      <Link
+        href={link.path}
+        className="group text-white transition duration-500 cursor-pointer"
+      >
+        {link.text}
       </Link>
     </li>
   ));
 
   return (
-    <header className="w-full h-20 fixed z-50 flex justify-center items-center bg-primary text-white text-xl font-medium">
-      <div className="flex w-[90%] md:w-[60%] justify-between items-center">
-        <div className="flex items-center">
-          <Image src={logo} alt="Logo" width={60} />
-          <ul className="hidden md:flex">{linksHandler}</ul>
+    <>
+      <header className="w-full h-20 fixed z-40 flex justify-center items-center bg-primary text-white text-xl font-medium">
+        <div className="flex w-[90%] md:w-[60%] justify-between items-center">
+          <div className="flex items-center">
+            <Link href="/">
+              <Image src={logo} alt="Logo" width={60} />
+            </Link>
+            <ul className="hidden md:flex">{linksHandler}</ul>
+          </div>
+          <button className="hidden md:block w-[116px] h-[47px] bg-third rounded-md">
+            Login
+          </button>
+          {hidden ? (
+            <AiOutlineMenu
+              className="block md:hidden text-3xl"
+              onClick={handleHidden}
+            />
+          ) : (
+            <AiOutlineClose
+              className="block md:hidden text-3xl"
+              onClick={handleHidden}
+            />
+          )}
         </div>
-        <button className="hidden md:block w-[116px] h-[47px] bg-third rounded-md">
-          Login
-        </button>
-        {hidden ? (
-          <AiOutlineMenu className="block md:hidden text-3xl" />
-        ) : (
-          <>
-            <AiOutlineClose className="block md:hidden text-3xl" />
-          </>
-        )}
-      </div>
-    </header>
+      </header>
+      {!hidden ? (
+        <div className="md:hidden w-screen h-screen flex justify-end bg-black/60">
+          <div className="md:hidden w-[60%] h-full flex flex-col items-center bg-primary">
+            <ul className="mt-20 w-full flex-col float-right text-white">
+              {hiddenLinkHandler}
+            </ul>
+            <button className="w-[116px] h-[47px] bg-third rounded-md text-white">
+              Login
+            </button>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };

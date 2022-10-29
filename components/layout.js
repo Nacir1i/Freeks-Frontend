@@ -8,8 +8,8 @@ export default ({ children }) => {
       <Head>
         <title>Freeks.exe</title>
       </Head>
-      {/* <Nav /> */}
-      <main className="w-full">{children}</main>
+      <Nav />
+      <main className="w-full h-full">{children}</main>
       <Footer />
     </>
   );
