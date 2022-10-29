@@ -1,63 +1,63 @@
-import { useState } from "react";
-import Image from "next/image";
-import { useSwipeable } from "react-swipeable";
+import { useState, useEffect, useCallback } from "react";
+import UseEmblaCarousel from "embla-carousel-react";
 import {
   MdOutlineArrowBackIosNew,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
-import { FaCircle } from "react-icons/fa";
+import Image from "next/dist/client/image";
 
-export default ({ data, dotes }) => {
-  const [index, setIndex] = useState(0);
+export default ({ data }) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
 
-  const indexForword = () => {
-    setIndex((prev) => (prev < data.length - 1 ? prev + 1 : 0));
-  };
-  const indexBackword = () => {
-    setIndex((prev) => (prev > 0 ? prev - 1 : data.length - 1));
-  };
-
-  const dataHanlder = data.map((img, index) => (
-    <Image src={img} alt="img" key={index} className="pointer-events-none" />
-  ));
-
-  const navHandler = data.map((current, index) => (
-    <li
-      className="mx-4 text-sm text-third"
-      onClick={() => setIndex(index)}
-      key={index}
-    >
-      <FaCircle className="cursor-pointer" />
-    </li>
-  ));
-  const swipeHandler = useSwipeable({
-    onSwipedLeft: indexBackword,
-    onSwipedRight: indexForword,
-    trackMouse: true,
+  const [emblaRef, embla] = UseEmblaCarousel({
+    align: "start",
+    loop: false,
+    skipSnaps: false,
   });
 
+  const scrollPrev = useCallback(() => {
+    console.log("prev");
+    if (embla) embla.scrollPrev();
+  }, [embla]);
+  const scrollNext = useCallback(() => {
+    console.log("next");
+    if (embla) embla.scrollNext();
+  }, [embla]);
+  // const scrollTo = useCallback(
+  //   (index) => embla && embla.scrollTo(index),
+  //   [embla]
+  // );
+
+  // const onSelect = useCallback(() => {
+  //   if (!embla) return;
+  //   setSelectedIndex(embla.selectedScrollSnap());
+  // }, [embla, setSelectedIndex]);
+  const slidesRenderer = data.map((slide, index) => (
+    <Image src={slide} alt="img" key={index} className="" />
+  ));
+
+  // useEffect(() => {
+  //   if (!embla) return;
+  //   onSelect();
+  //   setScrollSnaps(embla.scrollSnapList());
+  //   embla.on("select", onSelect);
+  // }, [embla, setScrollSnaps, onSelect]);
+
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-sky-200">
+    <div className="raltive w-full flex items-start justify-center">
+      <div className="overflow-hidden w-full" ref={emblaRef}>
+        <div className="flex w-full">{slidesRenderer}</div>
+      </div>
       <div
-        className="z-10 absolute left-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-third"
-        onClick={indexBackword}
+        className="z-10 absolute top-1/3 left-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-third"
+        onClick={scrollPrev}
       >
         <MdOutlineArrowBackIosNew className="mr-[.3rem] text-white text-4xl" />
       </div>
       <div
-        {...swipeHandler}
-        className="overflow-hidden relative w-full h-full flex items-center justify-center"
-      >
-        {dataHanlder}
-        {dotes ? (
-          <ul className="absolute bottom-3 flex">{navHandler}</ul>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div
-        className="z-10 absolute right-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-third"
-        onClick={indexForword}
+        className="z-10 absolute top-1/3 right-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-third"
+        onClick={scrollNext}
       >
         <MdOutlineArrowForwardIos className="ml-[.3rem] text-white text-4xl" />
       </div>
