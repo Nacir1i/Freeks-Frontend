@@ -8,9 +8,9 @@ export default ({ children }) => {
       <Head>
         <title>Freeks.exe</title>
       </Head>
-      <Nav />
+      {/* <Nav /> */}
       <main className="w-full">{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
