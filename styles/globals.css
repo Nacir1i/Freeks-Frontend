@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --height : calc(100vh - 5rem)
+  }
+}
+
 @layer components {
   #__next {
-    @apply h-screen bg-third flex flex-col;
+    @apply bg-third flex flex-col;
   }
+  
   html,
   body {
     @apply h-screen ;

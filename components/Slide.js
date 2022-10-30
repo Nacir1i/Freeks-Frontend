@@ -1,66 +1,73 @@
 import { useState, useEffect, useCallback } from "react";
-import UseEmblaCarousel from "embla-carousel-react";
+import Image from "next/dist/client/image";
+import UseEmblaCarousel, { Dot } from "embla-carousel-react";
 import {
   MdOutlineArrowBackIosNew,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
-import Image from "next/dist/client/image";
 
-export default ({ data }) => {
+export default ({ children, props, nav = false }) => {
+  const [emblaRef, emblaApi] = UseEmblaCarousel({ ...props });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
-  const [emblaRef, embla] = UseEmblaCarousel({
-    align: "center",
-    loop: true,
-    skipSnaps: false,
-  });
-
   const scrollPrev = useCallback(() => {
-    console.log("prev");
-    if (embla) embla.scrollPrev();
-  }, [embla]);
+    emblaApi && emblaApi.scrollPrev();
+  }, [emblaApi]);
   const scrollNext = useCallback(() => {
-    console.log("next");
-    if (embla) embla.scrollNext();
-  }, [embla]);
-  // const scrollTo = useCallback(
-  //   (index) => embla && embla.scrollTo(index),
-  //   [embla]
-  // );
+    emblaApi && emblaApi.scrollNext();
+  }, [emblaApi]);
+  const scrollTo = useCallback(
+    (index) => emblaApi && emblaApi.scrollTo(index),
+    [emblaApi]
+  );
 
-  // const onSelect = useCallback(() => {
-  //   if (!embla) return;
-  //   setSelectedIndex(embla.selectedScrollSnap());
-  // }, [embla, setSelectedIndex]);
-  const slidesRenderer = data.map((slide, index) => (
-    <Image src={slide} alt="img" key={index} className="" />
-  ));
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi, setSelectedIndex]);
 
-  // useEffect(() => {
-  //   if (!embla) return;
-  //   onSelect();
-  //   setScrollSnaps(embla.scrollSnapList());
-  //   embla.on("select", onSelect);
-  // }, [embla, setScrollSnaps, onSelect]);
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, setScrollSnaps, onSelect]);
 
   return (
-    <div className="relative w-full h-screen flex items-start justify-center">
-      <div className="overflow-hidden w-full" ref={emblaRef}>
-        <div className="flex w-full">{slidesRenderer}</div>
-      </div>
+    <div
+      className="relative w-full h-test overflow-hidden flex items-center justify-center bg-red-300"
+      ref={emblaRef}
+    >
+      <div className="flex">{children}</div>
       <div
-        className="z-10 absolute top-1/2 left-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-black"
+        className="hove:ease-in-out duration-200 z-10 absolute top-0 left-0 w-14 h-full flex items-center justify-center cursor-pointer hover:bg-third/60"
         onClick={scrollPrev}
       >
-        <MdOutlineArrowBackIosNew className="mr-[.3rem] text-white text-4xl" />
+        <MdOutlineArrowBackIosNew className="mr-[.3rem] text-third text-4xl" />
       </div>
       <div
-        className="z-10 absolute top-1/2 right-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-black"
+        className="hove:ease-in-out duration-200 z-10 absolute top-0 right-0 w-14 h-full flex items-center justify-center cursor-pointer hover:bg-third/60"
         onClick={scrollNext}
       >
-        <MdOutlineArrowForwardIos className="ml-[.3rem] text-white text-4xl" />
+        <MdOutlineArrowForwardIos className="ml-[.3rem] text-third text-4xl" />
       </div>
+      {nav ? (
+        <div className="z-10 absolute bottom-0 w-full h-10 flex justify-center items-center">
+          {children.map((slide, index) => (
+            <button
+              className={`bg-black/60 w-10 h-2 mx-2 rounded-md ${
+                index === selectedIndex ? "bg-blue-600" : ""
+              }`}
+              type="button"
+              onClick={() => scrollTo(index)}
+              key={index}
+            ></button>
+          ))}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

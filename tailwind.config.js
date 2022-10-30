@@ -11,6 +11,12 @@ module.exports = {
         secondary: "#231942",
         third: "#5E548E",
       },
+      height: {
+        test: "var(--height)",
+      },
+      aspectRatio: {
+        ratio: "1920 / 200",
+      },
     },
     screens: {
       sm: "640px",
