@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import Location from "./Location"
 
 export default ({ children }) => {
   return (
@@ -9,7 +10,8 @@ export default ({ children }) => {
         <title>Freeks.exe</title>
       </Head>
       <Nav />
-      <main className="w-full h-full">{children}</main>
+      <main className="w-full ">{children}</main>
+      {/* <Location/> */}
       <Footer />
     </>
   );

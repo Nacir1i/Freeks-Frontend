@@ -4,10 +4,10 @@
 
 @layer components {
   #__next {
-    @apply h-screen w-screen bg-third;
+    @apply h-screen bg-third flex flex-col;
   }
   html,
   body {
-    @apply h-screen w-screen;
+    @apply h-screen ;
   }
 }

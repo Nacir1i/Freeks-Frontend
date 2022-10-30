@@ -8,5 +8,5 @@ import img5 from "../public/slide5.png";
 const dataArray = [img1, img2, img3, img4, img5];
 
 export default () => {
-  return <Slide data={dataArray} dotes={false} />;
+  return <Slide data={dataArray} />;
 };

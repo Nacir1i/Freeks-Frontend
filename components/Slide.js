@@ -11,8 +11,8 @@ export default ({ data }) => {
   const [scrollSnaps, setScrollSnaps] = useState([]);
 
   const [emblaRef, embla] = UseEmblaCarousel({
-    align: "start",
-    loop: false,
+    align: "center",
+    loop: true,
     skipSnaps: false,
   });
 
@@ -45,18 +45,18 @@ export default ({ data }) => {
   // }, [embla, setScrollSnaps, onSelect]);
 
   return (
-    <div className="raltive w-full flex items-start justify-center">
+    <div className="relative w-full h-screen flex items-start justify-center">
       <div className="overflow-hidden w-full" ref={emblaRef}>
         <div className="flex w-full">{slidesRenderer}</div>
       </div>
       <div
-        className="z-10 absolute top-1/3 left-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-third"
+        className="z-10 absolute top-1/2 left-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-black"
         onClick={scrollPrev}
       >
         <MdOutlineArrowBackIosNew className="mr-[.3rem] text-white text-4xl" />
       </div>
       <div
-        className="z-10 absolute top-1/3 right-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-third"
+        className="z-10 absolute top-1/2 right-3 w-14 h-14 flex items-center justify-center cursor-pointer rounded-full bg-black"
         onClick={scrollNext}
       >
         <MdOutlineArrowForwardIos className="ml-[.3rem] text-white text-4xl" />
