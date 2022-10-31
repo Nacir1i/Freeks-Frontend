@@ -79,7 +79,7 @@ export default () => {
         </div>
       </header>
       {!hidden ? (
-        <div className="md:hidden w-screen h-screen flex justify-end bg-black/60">
+        <div className="md:hidden z-30 absolute top-0 right-0 w-screen h-screen flex justify-end bg-black/60">
           <div className="md:hidden w-[60%] h-full flex flex-col items-center bg-primary">
             <ul className="mt-20 w-full flex-col float-right text-white">
               {hiddenLinkHandler}

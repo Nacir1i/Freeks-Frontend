@@ -9,7 +9,7 @@ export default ({ children }) => {
         <title>Freeks.exe</title>
       </Head>
       <Nav />
-      <main className="w-full h-full">{children}</main>
+      <main className="w-full h-full pt-20">{children}</main>
       <Footer />
     </>
   );

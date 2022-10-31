@@ -2,12 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --height : calc(100vh - 5rem)
+  }
+}
+
 @layer components {
   #__next {
-    @apply h-screen w-screen bg-third;
+    @apply bg-third flex flex-col;
   }
+  
   html,
   body {
-    @apply h-screen w-screen;
+    @apply h-screen ;
   }
 }
