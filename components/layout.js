@@ -11,6 +11,7 @@ export default ({ children }) => {
       </Head>
       <Nav />
       <main className="w-full h-full pt-20">{children}</main>
+      <Location />
       <Footer />
     </>
   );

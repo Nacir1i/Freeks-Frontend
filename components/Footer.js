@@ -52,7 +52,7 @@
           </a>
         </div>
         <div className="flex justify-between text-lg">
-          <a href="#" className="text-gray-400 hover:text-white m-4">
+          <a href="#" className="text-gray-400 hover:text-white mb-4">
             Contact us
           </a>
         </div>
