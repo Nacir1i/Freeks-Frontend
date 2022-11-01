@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import Location from "./Location"
+import Location from "./Location";
 
-export default ({ children }) => {
+export default function layout({ children }) {
   return (
     <>
       <Head>
@@ -15,4 +15,4 @@ export default ({ children }) => {
       <Footer />
     </>
   );
-};
+}

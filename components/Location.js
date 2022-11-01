@@ -1,6 +1,7 @@
 import Image from "next/dist/client/image";
 import map from "../public/controller3.png";
-export default () => {
+
+export default function Location() {
   return (
     <div className="">
       <div className="flex">
@@ -19,4 +20,4 @@ export default () => {
       </div>
     </div>
   );
-};
+}

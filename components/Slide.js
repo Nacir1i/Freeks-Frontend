@@ -1,12 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/dist/client/image";
 import UseEmblaCarousel, { Dot } from "embla-carousel-react";
 import {
   MdOutlineArrowBackIosNew,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 
-export default ({ children, props, nav = false }) => {
+export default function Slide({ children, props, nav = false }) {
   const [emblaRef, emblaApi] = UseEmblaCarousel({ ...props });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
@@ -36,21 +35,21 @@ export default ({ children, props, nav = false }) => {
 
   return (
     <div
-      className="relative w-full h-test overflow-hidden flex items-center justify-center bg-red-300"
+      className="relative w-full h-full overflow-hidden flex items-center justify-center"
       ref={emblaRef}
     >
-      <div className="flex">{children}</div>
+      <div className="w-full h-full flex">{children}</div>
       <div
-        className="hove:ease-in-out duration-200 z-10 absolute top-0 left-0 w-14 h-full flex items-center justify-center cursor-pointer hover:bg-third/60"
+        className="hove:ease-in-out duration-200 z-10 absolute top-0 left-0 w-14 h-full flex items-center justify-center cursor-pointer"
         onClick={scrollPrev}
       >
-        <MdOutlineArrowBackIosNew className="mr-[.3rem] text-third text-4xl" />
+        <MdOutlineArrowBackIosNew className="mr-[.3rem] text-black text-4xl" />
       </div>
       <div
-        className="hove:ease-in-out duration-200 z-10 absolute top-0 right-0 w-14 h-full flex items-center justify-center cursor-pointer hover:bg-third/60"
+        className="hove:ease-in-out duration-200 z-10 absolute top-0 right-0 w-14 h-full flex items-center justify-center cursor-pointer"
         onClick={scrollNext}
       >
-        <MdOutlineArrowForwardIos className="ml-[.3rem] text-third text-4xl" />
+        <MdOutlineArrowForwardIos className="ml-[.3rem] text-black text-4xl" />
       </div>
       {nav ? (
         <div className="z-10 absolute bottom-0 w-full h-10 flex justify-center items-center">
@@ -70,4 +69,4 @@ export default ({ children, props, nav = false }) => {
       )}
     </div>
   );
-};
+}

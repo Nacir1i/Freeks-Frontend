@@ -23,7 +23,7 @@ const links = [
   },
 ];
 
-export default () => {
+export default function Nav() {
   const [hidden, setHidden] = useState(true);
   const handleHidden = () => {
     setHidden((prev) => !prev);
@@ -58,7 +58,12 @@ export default () => {
         <div className="flex w-[90%] md:w-[60%] justify-between items-center">
           <div className="flex items-center">
             <Link href="/">
-              <Image src={logo} alt="Logo" width={60} />
+              <Image
+                src={logo}
+                alt="Logo"
+                width={60}
+                className="pointer-events-none"
+              />
             </Link>
             <ul className="hidden md:flex">{linksHandler}</ul>
           </div>
@@ -94,4 +99,4 @@ export default () => {
       )}
     </>
   );
-};
+}
