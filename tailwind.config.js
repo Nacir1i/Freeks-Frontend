@@ -16,6 +16,7 @@ module.exports = {
       },
       aspectRatio: {
         ratio: "1920 / 200",
+        ratio2: "1920 / 150",
       },
     },
     screens: {

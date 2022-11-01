@@ -1,10 +1,24 @@
+import axios from "axios";
 import Slideshow from "../components/Slideshow";
+import Events from "../components/Events";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center">
+    <div className="w-full flex flex-col items-center justify-center">
       <Slideshow />
-      <div className="z-20 absolute bottom-0 left-0 bg-[url('../public/waves4.svg')] aspect-ratio w-full bg-no-repeat bg-center bg-cover"></div>
+      <Events data={data} />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const { data } = await axios.get(
+    "http://localhost:3001/api/event/getAllEvents"
+  );
+
+  return {
+    props: {
+      data: data.events,
+    },
+  };
 }
