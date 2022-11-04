@@ -8,8 +8,7 @@ const settings = {
 export default function Events({ data }) {
   const dataRenderer = data.map((event) => (
     <div
-      style={{ flex: "0 0 33%" }}
-      className="h-full mr-7 flex justify-center bg-white"
+      className="w-48 md:w-64 h-full mr-7 flex justify-center bg-white"
       key={event.id}
     >
       <div>
@@ -23,7 +22,7 @@ export default function Events({ data }) {
       <h1 className="absolute top-28 text-black text-2xl font-bold">
         Upcoming events and tournaments
       </h1>
-      <div className="w-full h-96 md:w-[60%] p-4 bg-third drop-shadow-2xl">
+      <div className="w-[90%] h-96 md:w-[44rem] p-4 bg-third drop-shadow-2xl">
         <Slide props={settings} nav={false}>
           {dataRenderer}
         </Slide>

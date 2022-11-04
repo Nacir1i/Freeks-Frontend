@@ -10,7 +10,7 @@ export default function Home({ data }) {
       <Slideshow />
       <Events data={data} />
       <Location />
-      {/* <Review /> */}
+      <Review />
     </div>
   );
 }
