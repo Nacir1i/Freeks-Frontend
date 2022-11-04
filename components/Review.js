@@ -5,7 +5,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function Events({ data }) {
+export default function Review({ data }) {
   const dataRenderer = data.map((event) => (
     <div
       style={{ flex: "0 0 33%" }}
