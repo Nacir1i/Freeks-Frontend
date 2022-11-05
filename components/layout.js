@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import Location from "./Location";
 
 export default function layout({ children }) {
   return (
@@ -11,7 +10,6 @@ export default function layout({ children }) {
       </Head>
       <Nav />
       <main className="w-full h-full pt-20">{children}</main>
-      <Location />
       <Footer />
     </>
   );
